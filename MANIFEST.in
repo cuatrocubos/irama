@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include irama *.css
+recursive-include irama *.csv
+recursive-include irama *.html
+recursive-include irama *.ico
+recursive-include irama *.js
+recursive-include irama *.json
+recursive-include irama *.md
+recursive-include irama *.png
+recursive-include irama *.py
+recursive-include irama *.svg
+recursive-include irama *.txt
+recursive-exclude irama *.pyc
