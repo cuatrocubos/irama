@@ -7,6 +7,11 @@ app_description = "Personalizaciones para Irama"
 app_email = "jgiron@cuatrocubos.com"
 app_license = "MIT"
 
+fixtures = [
+  { "dt": "Client Script", "filters": [["module", "like", "Irama"]] },
+  { "dt": "Custom Field", "filters": [["module", "like", "Irama"]] }
+]
+
 # Includes in <head>
 # ------------------
 
@@ -33,7 +38,9 @@ app_license = "MIT"
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
-
+doctype_js = {
+  "Sales Order": "public/js/sales_order_material_request.js"
+}
 # Home Pages
 # ----------
 
@@ -149,6 +156,10 @@ app_license = "MIT"
 # override_doctype_dashboards = {
 #	"Task": "irama.task.get_dashboard_data"
 # }
+
+override_whitelisted_methods = {
+  "erpnext.selling.doctype.sales_order.sales_order.make_stock_entry_for_sales_order": "irama.irama.doctype.sales_order.sales_order_custom_scripts.make_stock_entry_for_sales_order"
+}
 
 # exempt linked doctypes from being automatically cancelled
 #
