@@ -1,1 +1,13 @@
-[]
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Sales Invoice",
+  "enabled": 1,
+  "modified": "2023-04-19 17:02:27.549340",
+  "module": "Irama",
+  "name": "Facturas de Venta",
+  "script": "frappe.listview_settings['Sales Invoice'] = {\n\tadd_fields: [\"customer\", \"customer_name\", \"base_grand_total\", \"outstanding_amount\", \"due_date\", \"company\",\n\t\t\"currency\", \"is_return\"],\n\tget_indicator: function(doc) {\n\t\tconst status_colors = {\n\t\t\t\"Draft\": \"grey\",\n\t\t\t\"Unpaid\": \"orange\",\n\t\t\t\"Paid\": \"green\",\n\t\t\t\"Return\": \"gray\",\n\t\t\t\"Credit Note Issued\": \"gray\",\n\t\t\t\"Unpaid and Discounted\": \"orange\",\n\t\t\t\"Partly Paid and Discounted\": \"yellow\",\n\t\t\t\"Overdue and Discounted\": \"red\",\n\t\t\t\"Overdue\": \"red\",\n\t\t\t\"Partly Paid\": \"yellow\",\n\t\t\t\"Internal Transfer\": \"darkgrey\"\n\t\t};\n\t\treturn [__(doc.status), status_colors[doc.status], \"status,=,\"+doc.status];\n\t},\n\tright_column: \"grand_total\",\n\n\tonload: function(listview) {\n\t\tlistview.page.add_action_item(__(\"Delivery Note\"), ()=>{\n\t\t\terpnext.bulk_transaction_processing.create(listview, \"Sales Invoice\", \"Delivery Note\");\n\t\t});\n\n\t\tlistview.page.add_action_item(__(\"Payment\"), ()=>{\n\t\t\terpnext.bulk_transaction_processing.create(listview, \"Sales Invoice\", \"Payment Entry\");\n\t\t});\n\t\tlistview.filters = [\"tipo_comprobante\",\"=\",\"Factura\"]\n\t\tconsole.log(listview)\n\t}\n};",
+  "view": "List"
+ }
+]
