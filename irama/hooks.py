@@ -9,6 +9,7 @@ app_license = "MIT"
 
 fixtures = [
   { "dt": "Client Script", "filters": [["module", "like", "Irama"]] },
+  { "dt": "Print Format", "filters": [["module", "like", "Irama"]] },
   { "dt": "Custom Field", "filters": [["module", "like", "Irama"]] }
 ]
 
@@ -38,9 +39,9 @@ fixtures = [
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
-doctype_js = {
-  "Sales Order": "public/js/sales_order_material_request.js"
-}
+# doctype_js = {
+#   "Sales Order": "public/js/sales_order_material_request.js"
+# }
 # Home Pages
 # ----------
 
